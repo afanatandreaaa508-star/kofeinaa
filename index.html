@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Кофеина — кофейня в центре Бишкека</title>
+<meta name="description" content="Кофеина: свежая обжарка, авторские напитки и уютный зал в центре Бишкека. Ежедневно с 8:00 до 23:00.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&family=Playfair+Display:wght@600;700&subset=cyrillic&display=swap" rel="stylesheet">
+<style>
+/* ===== ЦВЕТА И ШРИФТЫ (меняйте здесь) ===== */
+:root{
+  --cream:#FBF5EA; --beige:#EADBC4; --tan:#B88B5E;
+  --brown:#5B3A29; --dark:#2E1F17; --green:#2F5D4A; --green-d:#244a3a;
+  --shadow:0 8px 24px rgba(60,35,20,.12);
+  --head:'Playfair Display',Georgia,serif;
+  --body:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{font-family:var(--body);background:var(--cream);color:var(--dark);line-height:1.6;font-size:16px}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:3px solid var(--green);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+section{padding:64px 0}
+h2{font-family:var(--head);font-size:clamp(1.7rem,5vw,2.4rem);color:var(--brown);margin-bottom:12px;line-height:1.2}
+.lead{color:#6b5446;max-width:560px;margin-bottom:32px}
+
+/* ===== КНОПКИ ===== */
+.btn{display:inline-block;padding:13px 26px;border-radius:999px;font-weight:700;border:2px solid var(--green);background:var(--green);color:#fff;cursor:pointer;font:inherit;font-weight:700;transition:background .2s,transform .2s}
+.btn:hover{background:var(--green-d);transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--green)}
+.btn.ghost:hover{background:var(--green);color:#fff}
+.btn.sm{padding:9px 20px;font-size:.95rem}
+
+/* ===== 1. ШАПКА ===== */
+header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(251,245,234,.94);backdrop-filter:blur(8px);box-shadow:0 2px 14px rgba(60,35,20,.08)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:var(--head);font-size:1.7rem;font-weight:700;color:var(--brown)}
+nav ul{display:flex;gap:26px;list-style:none;align-items:center}
+nav a:not(.btn){font-weight:500}
+nav a:not(.btn):hover{color:var(--green)}
+.burger{display:none;background:none;border:0;width:44px;height:44px;cursor:pointer}
+.burger span{display:block;width:24px;height:2px;background:var(--brown);margin:5px auto;transition:.25s}
+@media(max-width:760px){
+  .burger{display:block}
+  nav{position:absolute;top:64px;left:0;right:0;background:var(--cream);box-shadow:var(--shadow);max-height:0;overflow:hidden;transition:max-height .3s}
+  nav.open{max-height:360px}
+  nav ul{flex-direction:column;padding:16px 20px 24px;gap:16px;align-items:flex-start}
+}
+
+/* ===== 2. ГЛАВНЫЙ ЭКРАН ===== */
+.hero{min-height:100svh;display:flex;align-items:center;padding:110px 0 70px;color:#fff;
+  background:radial-gradient(circle at 80% 20%,rgba(184,139,94,.45),transparent 50%),linear-gradient(160deg,#3b261b 0%,#5B3A29 55%,#2F5D4A 130%)}
+.hero h1{font-family:var(--head);font-size:clamp(2.2rem,7vw,4rem);line-height:1.12;max-width:760px;margin-bottom:18px}
+.hero p{font-size:1.15rem;max-width:520px;color:#efe2cf;margin-bottom:30px}
+.hero .btns{display:flex;flex-wrap:wrap;gap:14px}
+.hero .btn.ghost{color:#fff;border-color:#fff}
+.hero .btn.ghost:hover{background:#fff;color:var(--brown)}
+.hero .btn:not(.ghost){background:var(--cream);color:var(--brown);border-color:var(--cream)}
+.hero .btn:not(.ghost):hover{background:#fff}
+.hero .cup{font-size:1.4rem;margin-bottom:14px}
+
+/* ===== 3. ПОЧЕМУ МЫ ===== */
+.why{background:var(--beige)}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.why-item{background:var(--cream);border-radius:20px;padding:26px;box-shadow:var(--shadow)}
+.why-item .ic{font-size:2rem;margin-bottom:8px}
+.why-item h3{font-size:1.05rem;color:var(--brown);margin-bottom:6px}
+.why-item p{color:#6b5446;font-size:.95rem}
+
+/* ===== 4. МЕНЮ ===== */
+.cat{font-family:var(--head);font-size:1.5rem;color:var(--green);margin:36px 0 16px}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.item{background:#fff;border-radius:18px;padding:20px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:6px;transition:transform .25s,box-shadow .25s}
+.item:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(60,35,20,.18)}
+.item .row{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.item h4{font-size:1.05rem;color:var(--brown)}
+.item .price{font-weight:700;color:var(--green);white-space:nowrap}
+.item p{color:#7a6556;font-size:.92rem}
+.note{margin-top:28px;font-size:.9rem;color:#7a6556}
+
+/* ===== 5. О НАС ===== */
+.about{background:var(--beige)}
+.about-in{display:grid;gap:32px;grid-template-columns:1fr;align-items:center}
+@media(min-width:800px){.about-in{grid-template-columns:1.2fr 1fr}}
+.about p{margin-bottom:12px;color:#4d392d;max-width:560px}
+.photo{aspect-ratio:4/3;border-radius:24px;box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  background:linear-gradient(145deg,var(--tan),var(--brown));color:#fff;font-size:3.2rem}
+.photo small{font-size:.95rem;font-family:var(--body)}
+
+/* ===== 6. ОТЗЫВЫ ===== */
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.rev{background:#fff;border-radius:20px;padding:24px;box-shadow:var(--shadow)}
+.stars{color:#d49a2a;letter-spacing:2px;margin-bottom:8px}
+.rev p{margin-bottom:12px}
+.rev b{color:var(--brown)}
+.small{font-size:.8rem;color:#8a7565;margin-top:20px}
+
+/* ===== 7. КОНТАКТЫ ===== */
+.contacts{background:var(--beige)}
+.c-grid{display:grid;gap:28px;grid-template-columns:1fr}
+@media(min-width:800px){.c-grid{grid-template-columns:1fr 1.2fr}}
+.c-list{list-style:none;display:grid;gap:14px;margin-bottom:24px}
+.c-list li{display:flex;gap:12px}
+.c-list a{color:var(--green);font-weight:700}
+.map{border:0;width:100%;height:100%;min-height:320px;border-radius:20px;box-shadow:var(--shadow);background:var(--cream)}
+.c-btns{display:flex;flex-wrap:wrap;gap:12px}
+
+/* ===== 8. ПОДВАЛ ===== */
+footer{background:var(--dark);color:#d9c9b4;padding:36px 0;text-align:center;font-size:.92rem}
+footer .logo{color:var(--cream);display:block;margin-bottom:8px}
+footer .soc{display:flex;gap:18px;justify-content:center;margin:12px 0}
+footer .soc a:hover{color:#fff}
+footer small{display:block;margin-top:10px;color:#9d8b78}
+
+/* ===== АНИМАЦИЯ ПОЯВЛЕНИЯ ===== */
+.js .rv{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+.js .rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .rv{opacity:1;transform:none;transition:none}
+  .btn,.item{transition:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== 1. ШАПКА ===== -->
+<header>
+  <div class="wrap bar">
+    <a href="#top" class="logo">Кофеина</a>
+    <button class="burger" aria-label="Открыть меню" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav id="nav">
+      <ul>
+        <li><a href="#menu">Меню</a></li>
+        <li><a href="#about">О нас</a></li>
+        <li><a href="#reviews">Отзывы</a></li>
+        <li><a href="#contacts">Контакты</a></li>
+        <!-- Замените номер 996555123456 на реальный (без + и пробелов) -->
+        <li><a class="btn sm" href="https://wa.me/996555123456?text=Здравствуйте!%20Хочу%20сделать%20заказ" target="_blank" rel="noopener">Заказать</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ===== 2. ГЛАВНЫЙ ЭКРАН ===== -->
+<section class="hero">
+  <div class="wrap">
+    <div class="cup">☕</div>
+    <h1>Кофе, в который хочется возвращаться каждый день</h1>
+    <p>Свежая обжарка, авторские напитки и уютное место в центре Бишкека.</p>
+    <div class="btns">
+      <a class="btn" href="#menu">Смотреть меню</a>
+      <a class="btn ghost" href="https://wa.me/996555123456" target="_blank" rel="noopener">Написать в WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 3. ПОЧЕМУ МЫ ===== -->
+<section class="why">
+  <div class="wrap">
+    <h2 class="rv">Почему к нам возвращаются</h2>
+    <div class="why-grid">
+      <div class="why-item rv"><div class="ic">🌱</div><h3>Свежая обжарка</h3><p>Привозим зерно каждую неделю, поэтому вкус всегда яркий.</p></div>
+      <div class="why-item rv"><div class="ic">🍯</div><h3>Авторские напитки</h3><p>Рецепты, которых нет в сетевых кофейнях.</p></div>
+      <div class="why-item rv"><div class="ic">🛋️</div><h3>Уют и быстрая подача</h3><p>Тёплый зал и заказ на стойке за пару минут.</p></div>
+      <div class="why-item rv"><div class="ic">🕗</div><h3>Каждый день</h3><p>Открыты с 8:00 до 23:00, без выходных.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 4. МЕНЮ (цены в сомах — меняйте в тексте .price) ===== -->
+<section id="menu">
+  <div class="wrap">
+    <h2 class="rv">Меню</h2>
+    <p class="lead rv">Всё готовим при вас. Для напитков есть овсяное и кокосовое молоко за +40 сом.</p>
+
+    <h3 class="cat rv">Кофе</h3>
+    <div class="menu-grid">
+      <div class="item rv"><div class="row"><h4>Эспрессо</h4><span class="price">120 сом</span></div><p>Насыщенный, с карамельным послевкусием</p></div>
+      <div class="item rv"><div class="row"><h4>Американо</h4><span class="price">140 сом</span></div><p>Двойной эспрессо и горячая вода</p></div>
+      <div class="item rv"><div class="row"><h4>Капучино</h4><span class="price">190 сом</span></div><p>Плотная молочная пена, 200 мл</p></div>
+      <div class="item rv"><div class="row"><h4>Латте</h4><span class="price">200 сом</span></div><p>Мягкий и сливочный, 300 мл</p></div>
+      <div class="item rv"><div class="row"><h4>Флэт уайт</h4><span class="price">210 сом</span></div><p>Двойной эспрессо и бархатное молоко</p></div>
+      <div class="item rv"><div class="row"><h4>Раф</h4><span class="price">230 сом</span></div><p>Сливки, ваниль и эспрессо</p></div>
+    </div>
+
+    <h3 class="cat rv">Авторские напитки</h3>
+    <div class="menu-grid">
+      <div class="item rv"><div class="row"><h4>Лавандовый раф</h4><span class="price">250 сом</span></div><p>Раф с сиропом из цветов лаванды</p></div>
+      <div class="item rv"><div class="row"><h4>Кокосовый латте</h4><span class="price">240 сом</span></div><p>Кокосовое молоко и эспрессо</p></div>
+      <div class="item rv"><div class="row"><h4>Айс-мокка</h4><span class="price">230 сом</span></div><p>Холодный кофе с шоколадом и льдом</p></div>
+      <div class="item rv"><div class="row"><h4>Солёная карамель</h4><span class="price">250 сом</span></div><p>Латте с карамелью и щепоткой морской соли</p></div>
+      <div class="item rv"><div class="row"><h4>Медовый кортадо</h4><span class="price">220 сом</span></div><p>Эспрессо, тёплое молоко и горный мёд</p></div>
+    </div>
+
+    <h3 class="cat rv">Десерты</h3>
+    <div class="menu-grid">
+      <div class="item rv"><div class="row"><h4>Чизкейк Нью-Йорк</h4><span class="price">240 сом</span></div><p>Классический, на песочной основе</p></div>
+      <div class="item rv"><div class="row"><h4>Медовик</h4><span class="price">190 сом</span></div><p>Нежные коржи и сметанный крем</p></div>
+      <div class="item rv"><div class="row"><h4>Круассан с миндалём</h4><span class="price">160 сом</span></div><p>Выпекаем утром, хрустящий снаружи</p></div>
+      <div class="item rv"><div class="row"><h4>Тирамису</h4><span class="price">260 сом</span></div><p>С маскарпоне и пропиткой из кофе</p></div>
+      <div class="item rv"><div class="row"><h4>Брауни</h4><span class="price">180 сом</span></div><p>Тёмный шоколад и грецкий орех</p></div>
+    </div>
+
+    <p class="note rv">Цены указаны в сомах. Меню обновляется сезонно.</p>
+  </div>
+</section>
+
+<!-- ===== 5. О НАС ===== -->
+<section id="about" class="about">
+  <div class="wrap about-in">
+    <div class="rv">
+      <h2>О нас</h2>
+      <p>Зерно мы берём у небольших обжарщиков и проверяем каждую партию на чашке. Эспрессо настраиваем утром до открытия, чтобы первый гость получил тот же вкус, что и последний.</p>
+      <p>Сиропы для авторских напитков варим сами: лаванду, карамель и мёд. Заходите на чашку кофе перед работой или на долгий вечер с книгой — столик для вас найдётся.</p>
+    </div>
+    <!-- Фото-заглушка: замените на <img src="photo.jpg" alt="Бариста"> -->
+    <div class="photo rv" role="img" aria-label="Фото бариста">☕<small>Фото бариста</small></div>
+  </div>
+</section>
+
+<!-- ===== 6. ОТЗЫВЫ ===== -->
+<section id="reviews">
+  <div class="wrap">
+    <h2 class="rv">Что говорят гости</h2>
+    <div class="rev-grid">
+      <div class="rev rv"><div class="stars">★★★★★</div><p>Лучший флэт уайт в Бишкеке, зерно реально чувствуется.</p><b>Айгуль</b></div>
+      <div class="rev rv"><div class="stars">★★★★★</div><p>Захожу каждое утро перед работой, бариста уже знает мой заказ.</p><b>Данияр</b></div>
+      <div class="rev rv"><div class="stars">★★★★★</div><p>Лавандовый раф — любимый. Зал тёплый, можно спокойно посидеть с ноутбуком.</p><b>Алина</b></div>
+    </div>
+    <p class="small rv">Отзывы с наших гостей.</p>
+  </div>
+</section>
+
+<!-- ===== 7. КОНТАКТЫ И КАРТА ===== -->
+<section id="contacts" class="contacts">
+  <div class="wrap c-grid">
+    <div class="rv">
+      <h2>Контакты</h2>
+      <ul class="c-list">
+        <!-- Замените адрес, телефон и Instagram на реальные -->
+        <li>📍 <span>г. Бишкек, ул. Киевская 95</span></li>
+        <li>🕗 <span>Ежедневно 8:00–23:00</span></li>
+        <li>📞 <a href="tel:+996555123456">+996 555 123 456</a></li>
+        <li>💬 <a href="https://wa.me/996555123456" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li>📷 <a href="https://instagram.com/kofeina.bishkek" target="_blank" rel="noopener">@kofeina.bishkek</a></li>
+      </ul>
+      <div class="c-btns">
+        <a class="btn" href="https://wa.me/996555123456?text=Здравствуйте!%20Хочу%20забронировать%20столик.%20Дата%20и%20время:%20" target="_blank" rel="noopener">Забронировать столик</a>
+        <a class="btn ghost" href="https://2gis.kg/bishkek/search/Киевская%2095" target="_blank" rel="noopener">Открыть в 2ГИС</a>
+      </div>
+    </div>
+    <div class="rv">
+      <!-- Карта: поменяйте q= на нужный адрес -->
+      <iframe class="map" title="Карта: Кофеина, Бишкек" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://maps.google.com/maps?q=Киевская%2095,%20Бишкек&z=16&output=embed"></iframe>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== 8. ПОДВАЛ ===== -->
+<footer>
+  <div class="wrap">
+    <span class="logo">Кофеина</span>
+    <div>© 2026 Кофеина. Бишкек.</div>
+    <div class="soc">
+      <a href="https://instagram.com/kofeina.bishkek" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://wa.me/996555123456" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://2gis.kg/bishkek/search/Киевская%2095" target="_blank" rel="noopener">2ГИС</a>
+    </div>
+    <small>Сайт создан для демонстрации. Данные можно заменить.</small>
+  </div>
+</footer>
+
+<script>
+/* Бургер-меню */
+var nav=document.getElementById('nav'),bg=document.querySelector('.burger');
+bg.addEventListener('click',function(){
+  var o=nav.classList.toggle('open');
+  bg.setAttribute('aria-expanded',o);
+});
+nav.addEventListener('click',function(e){
+  if(e.target.tagName==='A'){nav.classList.remove('open');bg.setAttribute('aria-expanded',false);}
+});
+/* Появление блоков при прокрутке */
+document.documentElement.classList.add('js');
+var els=document.querySelectorAll('.rv');
+if('IntersectionObserver' in window){
+  var io=new IntersectionObserver(function(en){
+    en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});
+  },{threshold:.12});
+  els.forEach(function(el){io.observe(el);});
+}else{els.forEach(function(el){el.classList.add('in');});}
+</script>
+</body>
+</html>
